@@ -39,7 +39,7 @@ index 8fe2a6a..5e348f9 100644
 +app.use(morgan());
  
  app.get("/hi", (req, res) => {
-   res.send("Hi")
+   res.send("Hi");
 ```
 
 If you try hitting your `/hi` and /bye` endpoints (and even `/`), you should now see some useful logs. Something like the following:
@@ -62,7 +62,7 @@ index 8fe2a6a..35f469f 100644
 +app.use(morgan("dev"));
  
  app.get("/hi", (req, res) => {
-   res.send("Hi")
+   res.send("Hi");
 ```
 
 Now the logs should be easier to read:
@@ -82,7 +82,7 @@ What's important for now, though is the following:
 If you look at lines 5-7, we have custom middleware defined:
 ```javascript
 const myMiddleware = (req, res, next) => {
-  console.log("Hello, from my middleware")
+  console.log("Hello, from my middleware");
   next();
 }
 ```
@@ -104,7 +104,7 @@ index 35f469f..c8a4354 100644
 +app.use(myMiddleware);
  
  app.get("/hi", (req, res) => {
-   res.send("Hi")
+   res.send("Hi");
 ```
 *Unlike morgan, our middleware doesn't take options. That is, instead of being a function that _returns_ a function (does your head hurt yet?),
 it's just a function. That's why we don't have to write `app.use(myMiddleware())`. 
@@ -128,12 +128,12 @@ index c8a4354..0552c26 100644
 -app.use(myMiddleware);
  
  app.get("/hi", (req, res) => {
-   res.send("Hi")
+   res.send("Hi");
  });
  
 -app.get("/bye", (req, res) => {
 +app.get("/bye", myMiddleware, (req, res) => {
-   res.send("Bye")
+   res.send("Bye");
  });
 ```
 
@@ -166,12 +166,12 @@ index 0552c26..13e7022 100644
  }
  
 @@ -15,7 +15,7 @@ app.get("/hi", (req, res) => {
-   res.send("Hi")
+   res.send("Hi");
  });
  
 -app.get("/bye", myMiddleware, (req, res) => {
 +app.get("/bye", myMiddleware(), (req, res) => {
-   res.send("Bye")
+   res.send("Bye");
  });
 ```
 
@@ -188,7 +188,7 @@ index 13e7022..768d358 100644
  
 -app.get("/hi", (req, res) => {
 +app.get("/hi", myMiddleware("Universe"), (req, res) => {
-   res.send("Hi")
+   res.send("Hi");
  });
 ```
 
