@@ -1,4 +1,4 @@
-# Middleware
+# Fun With Middleware
 This repo is a simple demonstration of [express middleware](https://expressjs.com/en/guide/using-middleware.html)
 
 ## Set up
