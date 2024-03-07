@@ -2,7 +2,8 @@ import express from "express";
 import morgan from "morgan";
 
 const myMiddleware = (req, res) => {
-  console.log("Hello, from my middleware")
+  console.log("Hello, from my middleware");
+  next();
 }
 
 const app = express();
