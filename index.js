@@ -9,11 +9,11 @@ const myMiddleware = (req, res) => {
 const app = express();
 
 app.get("/hi", (req, res) => {
-  res.send("Hi")
+  res.send("Hi");
 });
 
 app.get("/bye", (req, res) => {
-  res.send("Bye")
+  res.send("Bye");
 });
 
 app.listen(3000, () => {
